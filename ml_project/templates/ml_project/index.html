@@ -1,0 +1,182 @@
+{% load static from static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Book Recommendation System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .fa {
+      padding: 5px;
+      font-size: 25px;
+      width: 50px;
+    }
+    .wrapper{
+      text-align: center;
+      font-size: 29px;
+      padding-top: 30px;
+    }
+   body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+   }
+   .search{
+   position: relative;
+   box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+     
+   }
+
+   .search input{
+
+    height: 60px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+
+
+   }
+
+
+   .search input:focus{
+
+    box-shadow: none;
+    border: 2px solid blue;
+
+
+   }
+
+   .search button{
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    width: 110px;
+    background: blue;
+
+   }
+  </style>
+</head>
+<body>
+
+<div>
+  <nav class="navbar navbar bg-primary navbar-dark">
+    <div class="col-sm-6">
+      <a href="/"><img src="{% static 'img/ashish.png' %}" width="40" height="40"></a>
+      <a class="navbar-brand" href="/"> ML Project </a>
+      <a class="navbar-brand" href="https://www.codexashish.com/"> About Us </a>
+      <a class="navbar-brand" href="/search"> Search Book </a>
+    </div>
+  </nav>
+</div>
+  
+<div style="min-height: 90vh">
+  {% block content %}
+
+<div class="wrapper">
+  <h2>Book Recommendation System</h2>
+  <h3>Top 40 Books</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+   {% for book in context %}
+      <div class="col-sm-3">
+        <div class="card" style="margin-bottom: 15px;">
+          <center><img src="{{book.image}}" alt="Profile" style="width:50%; height:180px; padding:10px;"></center>
+          <div class="container">
+            <center><h6>{{ book.title }}</h6></center>
+            <p><b>Author: </b>{{ book.author }}</p>
+            <p><b>Total Ratings: </b>{{ book.total_rating }}</p>
+            <p><b>Average Rating: </b>{{ book.avg_rating }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+  {% endblock %}
+</div>
+
+<footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #1c2331"
+        >
+  <section
+           class="d-flex justify-content-between p-4"
+           style="background-color: #6351ce"
+           >
+    <div class="me-5">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div style="padding-right:50px;">
+      <a href="https://twitter.com/expoashish" class="text-white me-4" style="margin-right:8px;">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.google.com/" class="text-white me-4" style="margin-right:8px;">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="https://www.instagram.com/expoashish/" class="text-white me-4" style="margin-right:8px;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/expoashish/" class="text-white me-4" style="margin-right:8px;">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/expoashish  " class="text-white me-4" style="margin-right:8px;">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+  <section class="">
+    <div class="container text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-left">
+          <h6 class="text-uppercase fw-bold">Pages</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+              <div style="text-align:left;">
+                <a href="/" class="text-white">Home</a><br>
+                <a href="/" class="text-white">About US</a><br>
+                <a href="/" class="text-white">Contact US</a><br>
+                <a href="/" class="text-white">Codexashish</a><br>
+                <a href="/" class="text-white">DevDuniya</a><br>
+              </div>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-left" >
+          <h6 class="text-uppercase fw-bold">Contact</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+              <div style="text-align:left;">
+                <p><i class="fas fa-home mr-3"></i> New Delhi, ND 110082, INDIA</p>
+                <p><i class="fas fa-envelope mr-3"></i> expoashish@gmail.com</p>
+                <p><i class="fas fa-phone mr-3"></i> +91 98XXXXXXXX</p>
+                <p><i class="fas fa-print mr-3"></i> +91 98XXXXXXXX</p>
+              </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+       class="text-center p-3"
+       style="background-color: rgba(0, 0, 0, 0.2)"
+       >
+    <a class="text-white" href="/">Book Recommendation System</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>
+
+
